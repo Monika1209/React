@@ -1,36 +1,15 @@
-import { useState } from "react";
+import React, { useContext } from 'react';
+import { ThemeContext } from './ThemeContext';
+import '../App.css';
 
-const ThemeToggle = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
-
-  return (
-    <div
-      style={{
-        backgroundColor: darkMode ? "black" : "white",
-        color: darkMode ? "white" : "black",
-        height: "100vh",
-        padding: "20px",
-        transition: "all 0.3s",
-      }}
-    >
-      <button
-        onClick={toggleTheme}
-        style={{
-          padding: "10px 20px",
-          fontSize: "16px",
-          cursor: "pointer",
-          marginBottom: "10px",
-        }}
-      >
-        Switch to {darkMode ? "Light" : "Dark"} Mode
-      </button>
-      {children}
-    </div>
-  );
+const ThemeToggle = () => {
+    const { theme, toggleTheme } = useContext(ThemeContext);
+    return (
+        <div className="theme-container">
+            <h1>The current theme is {theme}</h1>
+            <button onClick={toggleTheme} className="theme-button">Toggle Theme</button>
+        </div>
+    );
 };
 
 export default ThemeToggle;

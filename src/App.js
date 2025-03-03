@@ -1,29 +1,48 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Counter from "./components/Counter";
-import ThemeToggle from "./components/ThemeToggle";
-import ProfileCard from "./components/ProfileCard";
-import Timer from "./components/Timer";
-import CartList from "./components/CartList";
-import CartDetails from "./components/CartDetails";
+import React from 'react';
+import { AuthProvider } from './components/AuthProvider';
+import Login from './components/Login';
+import UserProfile from './components/UserProfile';
+import ThemeProvider from './components/ThemeProvider';
+import ThemeToggle from './components/ThemeToggle';
+import './App.css';
+import { LanguageProvider } from './components/LanguageContext';
+import { Language } from './components/Language';
+import { CartProvider } from './components/CartContext';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <ThemeToggle>
-        <h1>Assignment 1</h1>
-        <ProfileCard name="John Doe" age={25} location="New York" />
-        <br />
-        <Timer />
-        <br />
-        <Counter />
-      </ThemeToggle>
-      <Routes>
-          <Route path="/" element={<CartList />} />
-          <Route path="/cart/:id" element={<CartDetails />} />
-        </Routes>
-    </BrowserRouter>
-  );
-}
 
+
+const App = () => (
+  <ThemeProvider>
+    <div className="app-container">
+      <ThemeToggle />
+    <AuthProvider>
+      <h1>Simple Authentication System</h1>
+      <Login />
+      <UserProfile />
+    </AuthProvider>
+
+    <br /> <br />
+
+    <LanguageProvider>
+      <Language />
+    </LanguageProvider>
+    <br /> <br />
+
+    <CartProvider>
+      <div>
+        <h1>Simple Shopping Cart</h1>
+        <ProductList />
+        <br />
+        <Cart />
+        <br />
+        <Checkout />
+      </div>
+    </CartProvider>
+    </div>
+  </ThemeProvider>
+
+);
 export default App;

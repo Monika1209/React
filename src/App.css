@@ -4,7 +4,42 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Roboto', sans-serif;
+body {
+  transition: background 0.3s, color 0.3s;
 }
 
+.app-container {
+  height: 100vh;
+  text-align: center;
+}
+
+.theme-container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.theme-button:hover {
+  background-color: #0056b3;
+}
+
+.userbtn{
+  margin-left: 20px;
+  padding: 2px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
